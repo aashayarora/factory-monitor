@@ -4,4 +4,5 @@ RUN yum -y install vim && \
     yum -y install git
 
 ADD startup.sh /home/
-CMD ["/home/startup.sh"]
+
+#CMD ["/home/startup.sh"]
