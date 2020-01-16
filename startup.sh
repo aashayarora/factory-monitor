@@ -1,3 +1,3 @@
 #!/bin/bash
 
-git clone https://github.com/aaarora/condor-elasticsearch.git
+git clone https://github.com/aaarora/condor-elasticsearch.git /home/
