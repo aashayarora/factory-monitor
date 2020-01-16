@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: factory-monitor
+  namespace: osg-frontends
+spec:
+  selector:
+      matchLabels:
+        k8s-app: factory-monitor
+  template:
+      metadata:
+        labels:
+          k8s-app: factory-monitor
+      spec:
+        containers:
+        -name: factory-monitor
+          image: aaarora/factory-monitor:latest 
+          ports:
+          - containerPort: 80
+          volumeMounts:
+          - mountPath: home/condor-elasticsearch/config/rabbitmq_osg.json
+            name: rabbitmq
+            subPath: rabbitmq_osg.json
+          - mountPath: home/condor-elasticsearch/config/influxdb.json
+            name: influxdb
+            subPath: influxdb.json
+          resources:
+            limits:
+              cpu: 4
+              memory: 2Gi
+            requests:
+              cpu: 2
+              memory: 1Gi
+        restartPolicy: Always
+        volumes:
+          - name: influx
+              secret:
+                secretName: factory-config
+                items: 
+                - key: influxdb
+                  path: influxdb.json
+              defaultMode: 0600
+          - name: rabbitmq
+              secret:
+                secretName: factory-config
+                items:
+                - key: rabbitmq_osg
+                  path: rabbitmq_osg.json
+              defaultMode: 0600
