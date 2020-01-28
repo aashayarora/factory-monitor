@@ -5,4 +5,4 @@ RUN yum -y install vim && \
     
 ADD startup.sh /etc/scrpt/startup.sh
 
-CMD git clone https://github.com/aaarora/condor-elasticsearch.git /etc/condor-elasticsearch/
+CMD ["etc/scrpt/startup.sh"]
