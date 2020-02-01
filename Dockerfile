@@ -9,4 +9,4 @@ RUN yum -y update && \
 ADD imgconf.sh /etc/scrpt/imgconf.sh    
 ADD image-config.d /etc/image-config.d/
 
-CMD ["etc/scrpt/imgconf.sh"]
+CMD etc/scrpt/imgconf.sh
