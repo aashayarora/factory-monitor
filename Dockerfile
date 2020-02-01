@@ -5,8 +5,8 @@ RUN yum -y update && \
     yum -y install git && \
     yum -y install epel-release && \
     yum -y install python-pip
-    
-ADD startup.sh /etc/scrpt/startup.sh
-ADD packages.sh /etc/scrpt/startup.sh
 
-CMD ["etc/scrpt/startup.sh"]
+ADD imgconf.sh /etc/scrpt/imgconf.sh    
+ADD image-config.d /etc/image-config.d/
+
+CMD ["etc/scrpt/imgconf.sh"]

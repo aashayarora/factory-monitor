@@ -17,12 +17,15 @@ spec:
         image: aaarora/factory-monitor:latest 
         ports:
         - containerPort: 80
+        command: ["/bin/sh", "-ec", "sleep 1000"]
         volumeMounts:
-        - mountPath: home/condor-elasticsearch/config/rabbitmq_osg.json
+        - mountPath: etc/condor-elasticsearch/config/rabbitmq_osg.json
           name: rabbitmq
+          readOnly: true
           subPath: rabbitmq_osg.json
-        - mountPath: home/condor-elasticsearch/config/influxdb.json
+        - mountPath: etc/condor-elasticsearch/config/influxdb.json
           name: influxdb
+          readOnly: true
           subPath: influxdb.json
         resources:
           limits:
