@@ -1,3 +1,3 @@
 #!/bin/bash
 
-touch etc/testFile
+touch /etc/testFile
