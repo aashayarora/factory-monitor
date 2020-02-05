@@ -1,4 +1,5 @@
-FROM centos:centos7
+FROM opensciencegrid/software-base:fresh
+LABEL maintainer OSG Software <help@opensciencegrid.org>
 
 RUN yum -y update && \
     yum -y install vim && \
@@ -6,8 +7,6 @@ RUN yum -y update && \
     yum -y install epel-release && \
     yum -y install python-pip
 
-ADD imgconf.sh /etc/scrpt/imgconf.sh 
-ADD image-config.d /etc/image-config.d/
-
-CMD ["/etc/scrpt/imgconf.sh"]
+ADD image-config.d /etc/osg/image-config.d/
+ADD monitor /etc/cron.d/monitor
 
