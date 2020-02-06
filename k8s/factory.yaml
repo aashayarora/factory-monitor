@@ -17,7 +17,6 @@ spec:
         image: aaarora/factory-monitor:latest 
         ports:
         - containerPort: 80
-        command: ["/bin/sh", "-ec", "sleep 1000"]
         volumeMounts:
         - mountPath: etc/condor-elasticsearch-config/config/rabbitmq_osg.json
           name: rabbitmq
