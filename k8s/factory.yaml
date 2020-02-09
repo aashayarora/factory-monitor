@@ -18,11 +18,11 @@ spec:
         ports:
         - containerPort: 80
         volumeMounts:
-        - mountPath: etc/condor-elasticsearch-config/config/rabbitmq_osg.json
+        - mountPath: etc/condor-elasticsearch/config/rabbitmq_osg.json
           name: rabbitmq
           readOnly: true
           subPath: rabbitmq_osg.json
-        - mountPath: etc/condor-elasticsearch-config/config/influxdb.json
+        - mountPath: etc/condor-elasticsearch/config/influxdb.json
           name: influxdb
           readOnly: true
           subPath: influxdb.json

@@ -1,0 +1,44 @@
+#!/bin/bash
+
+. /etc/init.d/functions
+
+stop() {
+    # stop factory monitoring by removing cron job in /etc/cron.d/factory-monitor
+    if [ -f /etc/cron.d/glideinwms-factory-monitor ]; then
+        rm /etc/cron.d/glideinwms-factory-monitor
+    fi
+}
+
+start() {
+    # start factory monitoring by instantiating a cron job as /etc/cron.d/factory-monitor
+    if [ ! -f /etc/cron.d/glideinwms-factory-monitor ]; then
+        cp /var/lib/glideinwms-factory-monitor/crontab/glideinwms-factory-monitor /etc/cron.d/
+    fi
+}
+
+
+case "$1" in
+    start)
+       start
+       ;;
+    stop)
+       stop
+       ;;
+    restart)
+       stop
+       start
+       ;;
+    status)
+       # code to check status of app comes here 
+       # example: status program_name
+       if [ -f /etc/cron.d/glideinwms-factory-monitor ]; then
+           echo "Running"
+       else 
+           echo "Not Running"
+       fi
+       ;;
+    *)
+       echo "Usage: $0 {start|stop|status|restart}"
+esac
+
+exit 0

@@ -1,0 +1,19 @@
+{
+	"factories" : [
+		{
+			"factory_name" : "voc0204",
+			"schedd_url": "http://vocms0204.cern.ch/factory/monitor/schedd_status.xml",
+			"completed_url": "http://vocms0204.cern.ch/factory/monitor/completed_data.json"
+		} , {
+			"factory_name" : "gfactory-1",
+			"schedd_url": "http://gfactory-1.t2.ucsd.edu/factory/monitor/schedd_status.xml",
+			"completed_url": "http://gfactory-1.t2.ucsd.edu/factory/monitor/completed_data.json"
+		} , {
+			"factory_name" : "glidein-1",
+			"schedd_url": "http://glidein-1.t2.ucsd.edu/factory/monitor/schedd_status.xml",
+			"completed_url": "http://glidein-1.t2.ucsd.edu/factory/monitor/completed_data.json"
+		}
+	],
+	"monitor_dir": "/monitor/",
+	"logfile_loc": "/factory_monitor.log"
+}

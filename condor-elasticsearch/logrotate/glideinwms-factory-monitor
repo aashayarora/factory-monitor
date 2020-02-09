@@ -1,0 +1,8 @@
+compress
+
+/var/log/gwms-factory/server/factory/factory_monitor.log {
+  missingok
+  rotate 5
+  weekly
+  minsize 50k
+}

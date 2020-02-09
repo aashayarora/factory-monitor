@@ -9,4 +9,4 @@ RUN yum -y update && \
 
 ADD image-config.d /etc/osg/image-config.d/
 ADD monitor /etc/cron.d/monitor
-
+ADD condor-elasticsearch /etc/condor-elasticsearch/
