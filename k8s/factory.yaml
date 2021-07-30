@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: factory-monitor
-  namespace: osg-frontends
+  namespace: osg-services
 spec:
   selector:
     matchLabels:
@@ -12,6 +12,10 @@ spec:
       labels:
         k8s-app: factory-monitor
     spec:
+      tolerations:
+      - key: "nautilus.io/stashcache"
+        operator: "Exists"
+        effect: "NoSchedule"
       containers:
       - name: factory-monitor
         image: aaarora/factory-monitor:latest 
@@ -34,6 +38,8 @@ spec:
             cpu: 2
             memory: 1Gi
       restartPolicy: Always
+      nodeSelector:
+        kubernetes.io/hostname: stashcache.t2.ucsd.edu
       volumes:
         - name: influxdb
           secret:

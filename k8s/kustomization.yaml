@@ -1,0 +1,15 @@
+resources:
+  - factory.yaml
+
+secretGenerator:
+- name: factory-config
+  files:
+    - private/rabbitmq_osg.json
+    - private/influxdb.json
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+namespace: osg-services
+commonLabels:
+  app: factory-monitor
