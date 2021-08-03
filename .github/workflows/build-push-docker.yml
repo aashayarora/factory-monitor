@@ -30,4 +30,4 @@ jobs:
         push: true
         context: docker/
         file: docker/Dockerfile
-    
+        tags: aaarora/factory-monitor:latest
