@@ -7,6 +7,11 @@ secretGenerator:
     - private/rabbitmq_osg.json
     - private/influxdb.json
 
+configMapGenerator:
+- name: host-config
+  files:
+    - config.json
+
 generatorOptions:
   disableNameSuffixHash: true
 

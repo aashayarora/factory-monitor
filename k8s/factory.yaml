@@ -30,12 +30,16 @@ spec:
           name: influxdb
           readOnly: true
           subPath: influxdb.json
+        - mountPath: etc/condor-elasticsearch/config/config.json
+          name: hostconfig
+          readOnly: true
+          subPath: config.json
         resources:
           limits:
-            cpu: 4
+            cpu: 2
             memory: 2Gi
           requests:
-            cpu: 2
+            cpu: 1
             memory: 1Gi
       restartPolicy: Always
       nodeSelector:
@@ -55,3 +59,10 @@ spec:
             - key: rabbitmq_osg.json
               path: rabbitmq_osg.json
             defaultMode: 0600
+        - name: hostconfig
+          configMap:
+            name: host-config
+            items:
+            - key: config.json
+              path: config.json
+
